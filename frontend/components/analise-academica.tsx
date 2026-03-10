@@ -26,9 +26,9 @@ interface AnaliseAcademicaProps {
 
 const chartConfig = {
   quantidade: { label: "Alunos" },
-  Baixo: { label: "Baixo", color: "var(--chart-1)" },
-  Médio: { label: "Médio", color: "var(--chart-2)" },
-  Alto: { label: "Alto", color: "var(--chart-3)" },
+  Baixo: { label: "Baixo", color: "#10b981" }, // verde
+  Médio: { label: "Médio", color: "#f97316" }, // laranja
+  Alto: { label: "Alto", color: "#f43f5e" }, // vermelho
 } satisfies ChartConfig;
 
 interface InfoDonutProps {
@@ -194,7 +194,7 @@ export function AnaliseAcademica({
                   nameKey="nivel"
                   innerRadius={50}
                   outerRadius={80}
-                  paddingAngle={3}
+                  paddingAngle={4}
                 />
                 <ChartLegend content={<ChartLegendContent nameKey="nivel" />} />
               </PieChart>
@@ -250,7 +250,7 @@ export function AnaliseAcademica({
                   nameKey="nivel"
                   innerRadius={50}
                   outerRadius={80}
-                  paddingAngle={3}
+                  paddingAngle={4}
                 />
                 <ChartLegend content={<ChartLegendContent nameKey="nivel" />} />
               </PieChart>
