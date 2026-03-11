@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Dashboard } from "@/app/dashboard/page";
+import Dashboard from "@/components/dashboard";
 import { DashboardSkeleton } from "@/components/skeleton-page";
 
 interface ApiResponse {

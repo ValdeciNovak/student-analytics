@@ -29,12 +29,6 @@ import { InfoIcon } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import {
-  ChartContainer,
-  ChartTooltip,
-  ChartTooltipContent,
-  type ChartConfig,
-} from "@/components/ui/chart";
-import {
   Drawer,
   DrawerClose,
   DrawerContent,
@@ -107,28 +101,28 @@ export interface Aluno {
 const TOOLTIPS: Record<string, string> = {
   ID_Aluno: "Identificador único do aluno",
   Nivel_Risco:
-    "Índice geral de vulnerabilidade — combina fatores acadêmicos e de evasão",
+    "Índice geral de vulnerabilidade combina fatores acadêmicos e de evasão",
   Probabilidade_Problema:
-    "Score geral de risco em % — quanto maior, mais fatores de risco acumulados",
+    "Score geral de risco em % quanto maior, mais fatores de risco acumulados",
   Risco_Academico:
     "Risco baseado em frequência, notas, reforço e dificuldade de aprendizado",
   Score_Academico:
-    "Score acadêmico em % — reflete desempenho e presença nas aulas",
+    "Score acadêmico em % reflete desempenho e presença nas aulas",
   Risco_Evasao:
     "Risco baseado em motivação, apoio familiar, distância e vínculo institucional",
   Score_Evasao:
-    "Score de evasão em % — quanto maior, mais sinais silenciosos de desengajamento",
+    "Score de evasão em % quanto maior, mais sinais silenciosos de desengajamento",
   Frequencia: "Percentual de presença nas aulas",
   Nota_Exame: "Nota obtida no exame (0-100)",
-  Nivel_Motivacao: "Nível de motivação — Baixo aumenta risco de evasão",
+  Nivel_Motivacao: "Nível de motivação - Baixo aumenta risco de evasão",
   Envolvimento_Pais:
-    "Grau de envolvimento dos pais — Baixo aumenta risco de evasão",
+    "Grau de envolvimento dos pais - Baixo aumenta risco de evasão",
   Distancia_Casa:
-    "Distância entre a residência e a instituição — Longe aumenta risco de evasão",
+    "Distância entre a residência e a instituição - Longe aumenta risco de evasão",
   Acesso_Recursos:
-    "Disponibilidade de materiais de estudo — Baixo aumenta risco de evasão",
+    "Disponibilidade de materiais de estudo - Baixo aumenta risco de evasão",
   Atividades_Extra:
-    "Participação em atividades extracurriculares — protege contra evasão",
+    "Participação em atividades extracurriculares, protege contra evasão",
 };
 
 // --- Badge de risco ---
@@ -188,7 +182,7 @@ function acaoRecomendada(aluno: Aluno): { titulo: string; descricao: string } {
     return {
       titulo: "🔴 Intervenção Urgente",
       descricao:
-        "Risco crítico nos dois índices. Contato imediato da coordenação — encaminhe para suporte pedagógico e psicossocial.",
+        "Risco crítico nos dois índices. Contato imediato da coordenação encaminhe para suporte pedagógico e psicossocial.",
     };
 
   if (acadGrave && evasaoMedio)
@@ -221,7 +215,7 @@ function acaoRecomendada(aluno: Aluno): { titulo: string; descricao: string } {
         "Aluno engajado, mas com dificuldades de desempenho. Encaminhe para sessões de reforço ou tutoria acadêmica.",
     };
 
-  // Atenção — fatores médios acumulados
+  // Atenção fatores médios acumulados
   if (acadMedio || evasaoMedio)
     return {
       titulo: "🟡 Atenção",
@@ -829,4 +823,3 @@ export function DataTableAlunos({ data }: { data: Aluno[] }) {
     </>
   );
 }
-// APPEND ONLY — não substituir o arquivo, só adicionar ao final para referência

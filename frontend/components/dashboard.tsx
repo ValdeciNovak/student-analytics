@@ -1,21 +1,19 @@
 "use client";
-import { AppSidebar } from "@/components/app-sidebar";
-import { ChartAreaInteractive } from "@/components/chart-area-interactive";
-import { DataTable } from "@/components/data-table";
 import { SectionCards } from "@/components/section-cards";
 import { SiteHeader } from "@/components/site-header";
-import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
+import { SidebarInset } from "@/components/ui/sidebar";
 
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { ChartBarLabel } from "@/components/chart-bar-label";
 import { ChartBarMultiple } from "@/components/chart-bar-multiple";
+import { Aluno } from "./data-table-alunos";
 
 interface DashboardProps {
-  alunos: any[];
+  alunos: Aluno[];
   estatisticas: any;
 }
 
-export function Dashboard({ alunos, estatisticas }: DashboardProps) {
+export default function Dashboard({ alunos, estatisticas }: DashboardProps) {
   return (
     <TooltipProvider>
         <SidebarInset>

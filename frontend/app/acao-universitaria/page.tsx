@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { SiteHeader } from "@/components/site-header";
 import { AnaliseAcademica } from "@/components/analise-academica";
-import { DataTableAlunos } from "@/components/data-table-alunos";
+import { Aluno, DataTableAlunos } from "@/components/data-table-alunos";
 
 import { DashboardSkeleton } from "@/components/skeleton-page";
 
@@ -21,7 +21,7 @@ interface Estatisticas {
 
 interface ApiResponse {
   estatisticas_gerais: Estatisticas;
-  lista_alunos: any[];
+  lista_alunos: Aluno[];
 }
 
 export default function AcaoUniversitaria() {

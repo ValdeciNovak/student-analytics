@@ -26,21 +26,20 @@ interface AnaliseAcademicaProps {
 
 const chartConfig = {
   quantidade: { label: "Alunos" },
-  Baixo: { label: "Baixo", color: "#10b981" }, // verde
-  Médio: { label: "Médio", color: "#f97316" }, // laranja
-  Alto: { label: "Alto", color: "#f43f5e" }, // vermelho
+  Baixo: { label: "Baixo", color: "#10b981" },
+  Médio: { label: "Médio", color: "#f97316" },
+  Alto: { label: "Alto", color: "#f43f5e" },
 } satisfies ChartConfig;
 
 interface InfoDonutProps {
-  titulo: string;
   itens: { label: string; valor: string }[];
   conclusao: string;
 }
 
-function InfoDonut({ titulo, itens, conclusao }: InfoDonutProps) {
+function InfoDonut({ itens, conclusao }: InfoDonutProps) {
   return (
-    <div className="flex flex-col gap-3 rounded-lg border bg-muted/30 px-4 py-3 text-sm">
-      <div className="flex flex-col gap-2">
+    <div className="flex flex-col gap-3 rounded-lg border bg-muted/30 px-4 py-3 text-sm h-full">
+      <div className="flex flex-col gap-2 flex-1">
         {itens.map((item) => (
           <div key={item.label} className="flex flex-col gap-0.5">
             <span className="text-xs font-medium text-foreground">
@@ -100,7 +99,7 @@ export function AnaliseAcademica({
           </CardHeader>
           <CardContent className="text-sm text-muted-foreground">
             <span className="font-medium text-foreground">{pctAcadAlto}%</span>{" "}
-            do total — risco de reprovação iminente
+            do total risco de reprovação iminente
           </CardContent>
         </Card>
 
@@ -113,7 +112,7 @@ export function AnaliseAcademica({
           </CardHeader>
           <CardContent className="text-sm text-muted-foreground">
             <span className="font-medium text-foreground">{pctAcadMedio}%</span>{" "}
-            do total — monitoramento contínuo
+            do total monitoramento contínuo
           </CardContent>
         </Card>
 
@@ -128,7 +127,7 @@ export function AnaliseAcademica({
             <span className="font-medium text-foreground">
               {pctEvasaoAlto}%
             </span>{" "}
-            do total — desengajamento silencioso
+            do total desengajamento silencioso
           </CardContent>
         </Card>
 
@@ -143,14 +142,14 @@ export function AnaliseAcademica({
             <span className="font-medium text-foreground">
               {pctEvasaoMedio}%
             </span>{" "}
-            do total — zona de atenção
+            do total zona de atenção
           </CardContent>
         </Card>
       </div>
 
       {/* Resumo executivo */}
       <div className="rounded-lg border bg-muted/40 px-5 py-4 text-sm text-muted-foreground leading-relaxed">
-        A saúde acadêmica da instituição está estável —{" "}
+        A saúde acadêmica da instituição está estável {" "}
         <span className="text-foreground font-medium">
           apenas {pctAcadAlto}% dos alunos
         </span>{" "}
@@ -163,7 +162,7 @@ export function AnaliseAcademica({
       </div>
 
       {/* Dois donuts */}
-      <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
+      <div className="grid grid-cols-1 gap-6 lg:grid-cols-2 items-stretch">
         {/* Donut Acadêmico */}
         <Card className="flex flex-col">
           <CardHeader className="items-center pb-0">
@@ -172,7 +171,7 @@ export function AnaliseAcademica({
               Como estão as notas e a frequência?
             </CardDescription>
           </CardHeader>
-          <CardContent className="flex-1 pb-0">
+          <CardContent className="pb-0">
             <ChartContainer
               config={chartConfig}
               className="mx-auto aspect-square max-h-[200px]"
@@ -200,9 +199,8 @@ export function AnaliseAcademica({
               </PieChart>
             </ChartContainer>
           </CardContent>
-          <CardContent className="pt-4">
+          <CardContent className="pt-4 flex-1 flex flex-col">
             <InfoDonut
-              titulo="Risco Acadêmico"
               itens={[
                 {
                   label: "O que leva em conta",
@@ -212,7 +210,7 @@ export function AnaliseAcademica({
                 {
                   label: "Por quê",
                   valor:
-                    "Esses fatores refletem diretamente o desempenho — são os sinais que aparecem no boletim e na chamada",
+                    "Esses fatores refletem diretamente o desempenho são os sinais que aparecem no boletim e na chamada",
                 },
               ]}
               conclusao={`${pctAcadBaixo}% dos alunos estão com risco baixo. O problema acadêmico grave é pontual e identificável.`}
@@ -228,7 +226,7 @@ export function AnaliseAcademica({
               Esses alunos vão continuar no curso?
             </CardDescription>
           </CardHeader>
-          <CardContent className="flex-1 pb-0">
+          <CardContent className="pb-0">
             <ChartContainer
               config={chartConfig}
               className="mx-auto aspect-square max-h-[200px]"
@@ -256,9 +254,8 @@ export function AnaliseAcademica({
               </PieChart>
             </ChartContainer>
           </CardContent>
-          <CardContent className="pt-4">
+          <CardContent className="pt-4 flex-1 flex flex-col">
             <InfoDonut
-              titulo="Risco de Evasão"
               itens={[
                 {
                   label: "O que leva em conta",
@@ -268,7 +265,7 @@ export function AnaliseAcademica({
                 {
                   label: "Por quê",
                   valor:
-                    "Esses fatores não aparecem nas notas — são comportamentais e contextuais. Um aluno pode tirar 7 e estar prestes a abandonar o curso",
+                    "Esses fatores não aparecem nas notas são comportamentais e contextuais. Um aluno pode tirar 7 e estar prestes a abandonar o curso",
                 },
               ]}
               conclusao={`${pctEvasaoAlto}% já estão em risco alto. São invisíveis para sistemas tradicionais baseados só em nota.`}
