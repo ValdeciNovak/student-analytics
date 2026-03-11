@@ -18,15 +18,6 @@ interface DashboardProps {
 export function Dashboard({ alunos, estatisticas }: DashboardProps) {
   return (
     <TooltipProvider>
-      <SidebarProvider
-        style={
-          {
-            "--sidebar-width": "calc(var(--spacing) * 72)",
-            "--header-height": "calc(var(--spacing) * 12)",
-          } as React.CSSProperties
-        }
-      >
-        <AppSidebar variant="inset" />
         <SidebarInset>
           <SiteHeader />
           <div className="flex flex-1 flex-col">
@@ -34,8 +25,6 @@ export function Dashboard({ alunos, estatisticas }: DashboardProps) {
               <div className="flex flex-col gap-4 py-4 md:gap-6 md:py-6">
                 <SectionCards estatisticas={estatisticas} />
                 <div className="px-4 lg:px-6 ">
-                  {/* <ChartAreaInteractive /> */}
-                  {/* <ChartBarLabel /> */}
                   <ChartBarLabel
                     dados={estatisticas.fatores_risco}
                     titulo="Fatores de Risco"
@@ -58,14 +47,10 @@ export function Dashboard({ alunos, estatisticas }: DashboardProps) {
                       dados={estatisticas.fatores_contagem_niveis}
                     />
                   </div>
-                
-
-                {/* <DataTable data={alunos} /> */}
               </div>
             </div>
           </div>
         </SidebarInset>
-      </SidebarProvider>
     </TooltipProvider>
   );
 }
