@@ -558,9 +558,7 @@ export function DataTableAlunos({ data }: { data: Aluno[] }) {
 
         {/* Paginação */}
         <div className="flex items-center justify-between px-4 lg:px-6">
-          <div className="text-sm text-muted-foreground">
-            {table.getFilteredRowModel().rows.length} de {data.length} alunos
-          </div>
+          
           <div className="flex items-center gap-4">
             <div className="flex items-center gap-2">
               <Label className="text-sm">Linhas</Label>

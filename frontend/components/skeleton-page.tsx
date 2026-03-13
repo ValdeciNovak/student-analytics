@@ -9,13 +9,13 @@ export function DashboardSkeleton() {
       <SiteHeader />
       <div className="flex flex-1 flex-col gap-6 px-4 py-6 lg:px-6">
         {/* Section Cards */}
-        <div className="grid grid-cols-4 gap-4 @md/main:grid-cols-2 @sm/main:grid-cols-1">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {Array.from({ length: 4 }).map((_, i) => (
             <div
               key={i}
-              className="rounded-xl border h-44 p-4 flex flex-col gap-3"
+              className="rounded-xl border h-48 p-4 flex flex-col gap-3"
             >
-              <Skeleton className="h-36 w-full" />
+              <Skeleton className="h-40 w-full" />
             </div>
           ))}
         </div>

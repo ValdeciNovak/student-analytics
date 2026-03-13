@@ -31,7 +31,8 @@ export default function Home() {
   const [dados, setDados] = useState<ApiResponse | null>(null);
 
   useEffect(() => {
-    fetch("https://student-analytics-y0kf.onrender.com/alunos")
+    // fetch("https://student-analytics-y0kf.onrender.com/alunos")
+    fetch("/dashboard_estudantes.json")
       .then((res) => res.json())
       .then(setDados);
   }, []);
