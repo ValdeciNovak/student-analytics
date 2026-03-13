@@ -37,11 +37,10 @@ interface ChartBarMultipleProps {
   dados: FatorContagem[];
 }
 
-// Mapa semântico por fator → nível → cor
 // Verde = bom/proteção, Laranja = atenção, Vermelho = risco
 const CORES_POR_FATOR: Record<string, Record<string, string>> = {
   Frequência: {
-    Alta: "#10b981", // boa frequência
+    Alta: "#10b981", 
     Média: "#f97316",
     Baixa: "#f43f5e",
   },
@@ -51,12 +50,12 @@ const CORES_POR_FATOR: Record<string, Record<string, string>> = {
     Baixa: "#f43f5e",
   },
   "Apoio Familiar": {
-    Alto: "#10b981", // alto apoio = bom
+    Alto: "#10b981", 
     Médio: "#f97316",
     Baixo: "#f43f5e",
   },
   "Acesso Recursos": {
-    Alto: "#10b981", // alto acesso = bom
+    Alto: "#10b981", 
     Médio: "#f97316",
     Baixo: "#f43f5e",
   },
@@ -66,7 +65,7 @@ const CORES_POR_FATOR: Record<string, Record<string, string>> = {
     Longe: "#f43f5e",
   },
   Dificuldade: {
-    Não: "#10b981", // sem dificuldade = bom
+    Não: "#10b981", 
     Sim: "#f43f5e",
   },
   "Sem Reforço": {
@@ -138,7 +137,7 @@ export function ChartBarMultiple({ dados }: ChartBarMultipleProps) {
   }, [dados, fatorSelecionado]);
 
   return (
-    <Card>
+    <Card className="max-h[200px]">
       <CardHeader className="flex flex-row items-start justify-between gap-4">
         <div>
           <CardTitle>Distribuição {fatorSelecionado}</CardTitle>
@@ -173,7 +172,7 @@ export function ChartBarMultiple({ dados }: ChartBarMultipleProps) {
       </CardHeader>
 
       <CardContent>
-        <ChartContainer config={chartConfig}>
+        <ChartContainer config={chartConfig} className="h-62.5 w-full">
           <BarChart accessibilityLayer data={chartData} margin={{ top: 24 }}>
             <CartesianGrid vertical={false} />
             <XAxis

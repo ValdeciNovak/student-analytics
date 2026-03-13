@@ -5,7 +5,6 @@ import os
 
 app = FastAPI()
 
-# Origens permitidas — adicione o domínio da Vercel após o deploy
 ALLOWED_ORIGINS = os.getenv("ALLOWED_ORIGINS", "http://localhost:3000").split(",")
 
 app.add_middleware(

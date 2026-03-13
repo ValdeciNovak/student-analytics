@@ -2,9 +2,6 @@ import pandas as pd
 import json
 import os
 
-# --- 1. CARREGAMENTO E TRADUÇÃO INICIAL ---
-# df = pd.read_csv("data/StudentPerformanceFactors.csv").dropna().copy()
-
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 df = pd.read_csv(os.path.join(BASE_DIR, "data", "StudentPerformanceFactors.csv")).dropna().copy()
@@ -30,7 +27,7 @@ df['ID_Aluno'] = range(1, len(df) + 1)
 # --- 2. MAPEAMENTOS DE RISCO (PESOS) ---
 mapa_inv = {'Low': 2, 'Medium': 1, 'High': 0}
 
-# Sugestão futura — limitar a 1 ponto, refletindo o impacto real
+
 mapa_professor = {'Low': 1, 'Medium': 0, 'High': 0}
 
 df['Risco_Familiar'] = df['Envolvimento_Pais'].map(mapa_inv)
@@ -45,7 +42,7 @@ df['Risco_Reforco'] = df.apply(
 )
 df['Bonus_Extra'] = df['Atividades_Extra'].map({'Yes': -1, 'No': 0})
 
-# --- NOVO: BÔNUS POR HORAS DE ESTUDO ---
+# --- BÔNUS POR HORAS DE ESTUDO ---
 def calcular_bonus_estudo(horas):
     if horas >= 30: return -1
     return 0
@@ -61,9 +58,9 @@ def calcular_risco_tendencia(linha):
     anterior = linha['Notas_Anteriores']
     variacao = (atual - anterior) / anterior * 100 if anterior > 0 else 0
     
-    if atual < 60: return 1       # está em zona crítica absoluta
-    if variacao >= 15: return -1  # melhora real e rara — merece bônus
-    return 0                      # qualquer queda é normal nesse dataset
+    if atual < 60: return 1       
+    if variacao >= 15: return -1  
+    return 0                      
 
 
 df['Risco_Tendencia'] = df.apply(calcular_risco_tendencia, axis=1)
@@ -86,21 +83,21 @@ def categorizar_risco(prob):
     return 'Alto'
 
 df['Nivel_Risco'] = df['Probabilidade_Problema'].apply(categorizar_risco)
-# --- 4.1 ÍNDICE ACADÊMICO ---
+# --- ÍNDICE ACADÊMICO ---
 # Foca em dificuldade de aprendizado: frequência, reforço, tendência da nota
 cols_academico = ['Risco_Frequencia', 'Risco_Reforco', 'Risco_Dificuldade', 'Risco_Tendencia', 'Bonus_Estudo']
 max_academico  = 6
 df['Score_Academico'] = (df[cols_academico].sum(axis=1).clip(0, max_academico) / max_academico * 100).round(2)
 df['Risco_Academico'] = df['Score_Academico'].apply(lambda p: 'Baixo' if p <= 20 else ('Médio' if p <= 50 else 'Alto'))
 
-# --- 4.2 ÍNDICE DE EVASÃO ---
+# --- ÍNDICE DE EVASÃO ---
 # Foca em desengajamento: motivação, apoio familiar, distância, recursos, vínculo
 cols_evasao = ['Risco_Motivacao', 'Risco_Familiar', 'Risco_Distancia', 'Risco_Recursos', 'Bonus_Extra']
 max_evasao  = 7
 df['Score_Evasao'] = (df[cols_evasao].sum(axis=1).clip(0, max_evasao) / max_evasao * 100).round(2)
 df['Risco_Evasao'] = df['Score_Evasao'].apply(lambda p: 'Baixo' if p <= 20 else ('Médio' if p <= 50 else 'Alto'))
 
-# --- 5. DIAGNÓSTICO AUTOMATIZADO ---
+# --- DIAGNÓSTICO AUTOMATIZADO ---
 def gerar_diagnostico(row):
     alertas_acad = []
     alertas_evas = []
@@ -162,7 +159,7 @@ nomes = {
     'Bonus_Estudo':      'Horas Estudo',
 }
 
-# Gráfico 1 — soma bruta separada em risco e proteção
+# Gráfico 1 soma bruta separada em risco e proteção
 fatores_risco = []
 fatores_protecao = []
 
@@ -173,7 +170,7 @@ for col, label in nomes.items():
     else:
         fatores_protecao.append({"fator": label, "total": abs(total)})
 
-# Gráfico 2 — contagem por nível de cada fator
+# Gráfico 2 contagem por nível de cada fator
 niveis_originais = {
     'Risco_Frequencia':  {0: 'Alta', 1: 'Média', 2: 'Baixa'},
     'Risco_Motivacao':   {0: 'Alta', 1: 'Média', 2: 'Baixa'},
@@ -208,7 +205,7 @@ for col in ['Envolvimento_Pais', 'Nivel_Motivacao', 'Qualidade_Professor',
             'Distancia_Casa','Acesso_Recursos', 'Dificuldades_Aprendizado', 'Atividades_Extra']:
     df[col] = df[col].map(mapa_traducao).fillna(df[col])
 
-# Exportação JSON (Mantida para seu Next.js)
+
 resumo = {
     "total_alunos": len(df),
     "media_risco_geral": round(df['Probabilidade_Problema'].mean(), 2),
@@ -221,12 +218,11 @@ resumo = {
         "risco_evasao":          int(len(df[(df['Risco_Academico']=='Baixo') & (df['Risco_Evasao']=='Alto')])),
         "intervencao_urgente":   int(len(df[(df['Risco_Academico']=='Alto')  & (df['Risco_Evasao']=='Alto')])),
     },
-    "fatores_risco":             fatores_risco,       # ← novo
-    "fatores_protecao":          fatores_protecao,    # ← novo
-    "fatores_contagem_niveis":   fatores_contagem_niveis,  # ← novo
+    "fatores_risco":             fatores_risco,       
+    "fatores_protecao":          fatores_protecao,    
+    "fatores_contagem_niveis":   fatores_contagem_niveis,  
 }
 
-# Adiciona Score_Academico, Risco_Academico, Score_Evasao, Risco_Evasao
 pacote_completo = {
     "estatisticas_gerais": resumo,
     "lista_alunos": df[[
@@ -248,8 +244,6 @@ pacote_completo = {
     ]].to_dict(orient='records')
 }
 
-# with open('dashboard_estudantes.json', 'w', encoding='utf-8') as f:
-#     json.dump(pacote_completo, f, ensure_ascii=False, indent=4)
 
 output_path = os.path.join(BASE_DIR, 'dashboard_estudantes.json')
 with open(output_path, 'w', encoding='utf-8') as f:
