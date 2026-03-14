@@ -1,7 +1,6 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import { AppSidebar } from "@/components/app-sidebar";
 import { SidebarProvider, useSidebar } from "@/components/ui/sidebar";
 import { useEffect } from "react";
 import { BottomNav } from "./bottom-nav";
@@ -34,7 +33,6 @@ export function LayoutContainer({ children }: Props) {
     <div className="flex min-h-screen">
       <SidebarProvider defaultOpen={false}>
         <SidebarAutoClose />
-        <AppSidebar className="hidden md:flex" />
         <main className="flex-1 overflow-y-auto p-6 pb-20 md:pb-6">
           {children}
         </main>

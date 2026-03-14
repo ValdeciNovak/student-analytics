@@ -149,7 +149,7 @@ export function AnaliseAcademica({
 
       {/* Resumo executivo */}
       <div className="rounded-lg border bg-muted/40 px-5 py-4 text-sm text-muted-foreground leading-relaxed">
-        A saúde acadêmica da instituição está estável {" "}
+        A saúde acadêmica da instituição está estável, {" "}
         <span className="text-foreground font-medium">
           apenas {pctAcadAlto}% dos alunos
         </span>{" "}

@@ -270,16 +270,6 @@ function makeHeader(label: string, colKey: string) {
 
 const columns: ColumnDef<Aluno>[] = [
   {
-    accessorKey: "ID_Aluno",
-    header: makeHeader("ID", "ID_Aluno"),
-    cell: ({ row }) => (
-      <span className="text-muted-foreground text-xs">
-        #{row.original.ID_Aluno}
-      </span>
-    ),
-    enableHiding: false,
-  },
-  {
     accessorKey: "Nivel_Risco",
     header: makeHeader("Risco Geral", "Nivel_Risco"),
     cell: ({ row }) => <RiscoBadge nivel={row.original.Nivel_Risco} />,
@@ -500,11 +490,19 @@ export function DataTableAlunos({ data }: { data: Aluno[] }) {
         </div>
 
         {/* Tabela */}
+        <div className="px-4 lg:px-6">
+          <h2 className="text-base font-semibold">Análise Individual</h2>
+          <p className="text-sm text-muted-foreground">
+            Clique em "Ver aluno" para explorar o perfil de risco detalhado de
+            cada estudante.
+          </p>
+        </div>
         <div className="overflow-hidden rounded-lg border mx-4 lg:mx-6">
           <Table>
             <TableHeader className="sticky top-0 z-10 bg-muted">
               {table.getHeaderGroups().map((hg) => (
                 <TableRow key={hg.id}>
+                  <TableHead className="w-24">Status Detalhado</TableHead>
                   {hg.headers.map((header) => (
                     <TableHead key={header.id}>
                       {header.isPlaceholder
@@ -515,7 +513,6 @@ export function DataTableAlunos({ data }: { data: Aluno[] }) {
                           )}
                     </TableHead>
                   ))}
-                  <TableHead />
                 </TableRow>
               ))}
             </TableHeader>
@@ -523,6 +520,16 @@ export function DataTableAlunos({ data }: { data: Aluno[] }) {
               {table.getRowModel().rows.length ? (
                 table.getRowModel().rows.map((row) => (
                   <TableRow key={row.id}>
+                    <TableCell>
+                      <Button
+                        className="w-full"
+                        variant="outline"
+                        size="sm"
+                        onClick={() => setAlunoSelecionado(row.original)}
+                      >
+                        Ver aluno
+                      </Button>
+                    </TableCell>
                     {row.getVisibleCells().map((cell) => (
                       <TableCell key={cell.id}>
                         {flexRender(
@@ -531,15 +538,6 @@ export function DataTableAlunos({ data }: { data: Aluno[] }) {
                         )}
                       </TableCell>
                     ))}
-                    <TableCell>
-                      <Button
-                        variant="outline"
-                        size="sm"
-                        onClick={() => setAlunoSelecionado(row.original)}
-                      >
-                        Ver aluno
-                      </Button>
-                    </TableCell>
                   </TableRow>
                 ))
               ) : (
@@ -558,7 +556,6 @@ export function DataTableAlunos({ data }: { data: Aluno[] }) {
 
         {/* Paginação */}
         <div className="flex items-center justify-between px-4 lg:px-6">
-          
           <div className="flex items-center gap-4">
             <div className="flex items-center gap-2">
               <Label className="text-sm">Linhas</Label>
