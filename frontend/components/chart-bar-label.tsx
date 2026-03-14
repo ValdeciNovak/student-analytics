@@ -43,7 +43,7 @@ const DESCRICOES: Record<string, string> = {
   "Sem Reforço": "Aluno sem sessões de reforço e com nota abaixo de 65",
   // Fatores de proteção
   "Ativ. Extras":
-    "Participação em atividades extracurriculares — fator de proteção contra evasão",
+    "Participação em atividades extracurriculares fator de proteção contra evasão",
   "Tendência Nota":
     "Alunos com melhora significativa de nota (≥15%) recebem bônus de proteção",
   "Horas Estudo":

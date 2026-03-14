@@ -81,7 +81,7 @@ export default function DetalhesAnalise() {
   return (
     <>
       <SiteHeader />
-      <div className="flex mb-10 flex-1 flex-col gap-8 px-4 py-8 lg:px-6 max-w-4xl mx-auto w-full pb-20 md:pb-8">
+      <div className="flex md:mb-10 flex-1 flex-col gap-8 px-4 py-8 lg:px-6 max-w-4xl mx-auto w-full pb-5 md:pb-8">
         {/* Hero */}
         <div className="flex flex-col gap-3">
           <div className="flex items-center gap-2 text-xs font-medium text-muted-foreground uppercase tracking-wide">
@@ -92,7 +92,7 @@ export default function DetalhesAnalise() {
             Como identificamos alunos em risco antes que desapareçam
           </h1>
           <p className="text-muted-foreground leading-relaxed">
-            Sistemas tradicionais olham para o passado — notas já dadas, faltas
+            Sistemas tradicionais olham para o passado, notas já dadas, faltas
             já acumuladas. Esta análise olha para os sinais que o boletim não
             mostra.
           </p>
@@ -112,25 +112,25 @@ export default function DetalhesAnalise() {
             . Para qualquer sistema baseado em boletim, ele está bem. Mas e se
             ele mora longe, perdeu a motivação, não tem apoio em casa e parou de
             participar de qualquer atividade na universidade? Esse aluno está se
-            desconectando silenciosamente — e ninguém está vendo.
+            desconectando silenciosamente e ninguém está vendo.
           </div>
         </div>
 
         {/* Índice Geral */}
         <div className="flex flex-col gap-4">
           <h2 className="text-base font-semibold">
-            Dashboard 1 — Saúde Universitária
+            Dashboard 1 - Saúde Universitária
           </h2>
           <p className="text-sm text-muted-foreground">
             A primeira tela mostra a saúde geral da instituição. Os quatro cards
-            do topo trazem o Índice Geral de Risco — um termômetro combinado que
+            do topo trazem o Índice Geral de Risco, um termômetro combinado que
             soma fatores acadêmicos e de evasão em um único score por aluno.
           </p>
           <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
             <div className="rounded-xl border bg-card p-4 flex flex-col gap-1 text-center">
               <span className="text-2xl font-bold tabular-nums">1.582</span>
               <span className="text-xs text-muted-foreground">
-                Risco Baixo — 24,8%
+                Risco Baixo - 24,8%
               </span>
               <div className="mt-1 h-1.5 w-full rounded-full bg-emerald-500/20">
                 <div className="h-full w-[24.8%] rounded-full bg-emerald-500" />
@@ -139,7 +139,7 @@ export default function DetalhesAnalise() {
             <div className="rounded-xl border bg-card p-4 flex flex-col gap-1 text-center">
               <span className="text-2xl font-bold tabular-nums">4.617</span>
               <span className="text-xs text-muted-foreground">
-                Risco Médio — 72,4%
+                Risco Médio - 72,4%
               </span>
               <div className="mt-1 h-1.5 w-full rounded-full bg-yellow-400/20">
                 <div className="h-full w-[72.4%] rounded-full bg-yellow-400" />
@@ -148,7 +148,7 @@ export default function DetalhesAnalise() {
             <div className="rounded-xl border bg-card p-4 flex flex-col gap-1 text-center">
               <span className="text-2xl font-bold tabular-nums">179</span>
               <span className="text-xs text-muted-foreground">
-                Risco Alto — 2,8%
+                Risco Alto - 2,8%
               </span>
               <div className="mt-1 h-1.5 w-full rounded-full bg-rose-500/20">
                 <div className="h-full w-[2.8%] rounded-full bg-rose-500" />
@@ -169,7 +169,7 @@ export default function DetalhesAnalise() {
           </h2>
           <p className="text-sm text-muted-foreground">
             Logo abaixo dos cards, dois gráficos de barras mostram quais fatores
-            mais contribuíram para o risco geral — separados em dois grupos
+            mais contribuíram para o risco geral separados em dois grupos
             opostos.
           </p>
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
@@ -193,13 +193,13 @@ export default function DetalhesAnalise() {
           <h2 className="text-base font-semibold">Distribuição por fator</h2>
           <p className="text-sm text-muted-foreground">
             O terceiro gráfico do Dashboard 1 permite explorar como os alunos
-            estão distribuídos em cada nível de cada fator — com cores
+            estão distribuídos em cada nível de cada fator com cores
             semânticas que facilitam a leitura.
           </p>
           <CardInfo
             icon={<SlidersHorizontalIcon className="size-4" />}
             titulo="Gráfico de Distribuição Interativo"
-            descricao="Use o seletor no canto superior direito para alternar entre os 11 fatores. As barras mostram quantos alunos estão em cada nível — verde para bom, laranja para atenção, vermelho para risco alto."
+            descricao="Use o seletor no canto superior direito para alternar entre os 11 fatores. As barras mostram quantos alunos estão em cada nível, verde para bom, laranja para atenção, vermelho para risco alto."
             destaque="As cores são aplicadas por fator + nível. 'Alto' em Acesso a Recursos é verde (bom), mas 'Alto' em Dificuldade de Aprendizado é vermelho (ruim)."
           />
         </div>
@@ -207,7 +207,7 @@ export default function DetalhesAnalise() {
         {/* Os dois índices */}
         <div className="flex flex-col gap-4">
           <h2 className="text-base font-semibold">
-            Dashboard 2 — Dois índices, dois problemas
+            Dashboard 2 - Dois índices, dois problemas
           </h2>
           <p className="text-sm text-muted-foreground">
             A segunda tela separa o risco em dois índices independentes. São
@@ -280,7 +280,7 @@ export default function DetalhesAnalise() {
               },
               {
                 label: "Atividades Extras",
-                desc: "Participar protege contra evasão — reduz o risco",
+                desc: "Participar protege contra evasão e reduz o risco",
                 risco: false,
               },
               {
@@ -365,7 +365,7 @@ export default function DetalhesAnalise() {
             <span className="text-foreground font-semibold">1.420 alunos</span>{" "}
             têm nota aceitável e risco alto de evasão. Nenhum sistema baseado só
             em boletim os identifica. São estudantes se desconectando da
-            universidade sem que ninguém perceba — até que param de aparecer.
+            universidade sem que ninguém perceba até que param de aparecer.
           </p>
         </div>
 
@@ -380,7 +380,7 @@ export default function DetalhesAnalise() {
             <CardInfo
               icon={<UsersIcon className="size-4" />}
               titulo="Perfil de Risco"
-              descricao="Gráfico com 7 fatores individuais coloridos por nível — do mais crítico ao mais protegido, ordenados por gravidade."
+              descricao="Gráfico com 7 fatores individuais coloridos por nível, do mais crítico ao mais protegido, ordenados por gravidade."
             />
             <CardInfo
               icon={<TargetIcon className="size-4" />}
@@ -390,7 +390,7 @@ export default function DetalhesAnalise() {
             <CardInfo
               icon={<ZapIcon className="size-4" />}
               titulo="Ação Recomendada"
-              descricao="Gerada automaticamente pelo cruzamento dos índices — de monitoramento leve a intervenção urgente, com texto explicativo."
+              descricao="Gerada automaticamente pelo cruzamento dos índices de monitoramento leve a intervenção urgente, com texto explicativo."
             />
           </div>
         </div>
@@ -411,7 +411,7 @@ export default function DetalhesAnalise() {
             >
               Student Academic Performance
             </a>{" "}
-            do Kaggle — 6.378 registros com 20 variáveis sobre hábitos de
+            do Kaggle 6.378 registros com 20 variáveis sobre hábitos de
             estudo, contexto familiar, motivação e desempenho acadêmico.
           </p>
         </div>
