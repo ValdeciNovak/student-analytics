@@ -204,7 +204,7 @@ function acaoRecomendada(aluno: Aluno): { titulo: string; descricao: string } {
     return {
       titulo: "🟠 Risco de Evasão",
       descricao:
-        "Desempenho acadêmico ok, mas sinais silenciosos de desengajamento. Recomenda-se mentoria para fortalecer o vínculo com a instituição.",
+        "Desempenho acadêmico OK, mas sinais silenciosos de desengajamento. Recomenda-se mentoria para fortalecer o vínculo com a instituição.",
     };
 
   // Dificuldade acadêmica isolada
