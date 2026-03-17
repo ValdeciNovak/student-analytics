@@ -16,7 +16,8 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Análise Acadêmica",
-  description: "Análise Acadêmica é uma plataforma de análise de dados acadêmicos, fornecendo insights e visualizações para estudantes, professores e pesquisadores.",
+  description:
+    "Análise Acadêmica é uma plataforma de análise de dados acadêmicos, fornecendo insights e visualizações para estudantes, professores e pesquisadores.",
 };
 
 export default function RootLayout({
@@ -29,14 +30,14 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased`}
       >
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-          >
-            <LayoutContainer>{children}</LayoutContainer>
-          </ThemeProvider>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="dark"
+          enableSystem={false}
+          disableTransitionOnChange
+        >
+          <LayoutContainer>{children}</LayoutContainer>
+        </ThemeProvider>
       </body>
     </html>
   );
